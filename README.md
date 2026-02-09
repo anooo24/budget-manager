@@ -23,8 +23,3 @@ Track your monthly salary, savings, spending, manage multiple accounts, view his
 ---
 
 ## Installation / Usage
-
-1. **Download or clone the repository**:
-
-```bash
-git clone <your-repo-url>
