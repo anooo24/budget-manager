@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Professional Banking App</title>
+
+<link rel="stylesheet" href="style.css">
+
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<!-- jsPDF -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<!-- SheetJS for Excel -->
+<script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+
+</head>
+<body>
+
+<header>💰 Professional Banking App</header>
+
+<nav>
+  <button class="active" onclick="showTab('dashboard')">Dashboard</button>
+  <button onclick="showTab('budget')">Budget</button>
+  <button onclick="showTab('accounts')">Accounts</button>
+  <button onclick="showTab('history')">History</button>
+  <button onclick="showTab('reports')">Reports</button>
+</nav>
+
+<!-- DASHBOARD -->
+<section id="dashboard" class="active">
+  <div class="grid">
+    <div class="stat salary">Salary<br><b id="dSalary">0</b></div>
+    <div class="stat saved">Saved<br><b id="dSaved">0</b></div>
+    <div class="stat spend">Spending<br><b id="dSpend">0</b></div>
+    <div class="stat left">Left<br><b id="dLeft">0</b></div>
+  </div>
+  <div class="card">
+    <canvas id="budgetChart"></canvas>
+  </div>
+</section>
+
+<!-- BUDGET -->
+<section id="budget">
+  <div class="card">
+    <h3>Monthly Budget</h3>
+    <input type="number" id="salary" placeholder="Monthly Salary">
+    <input type="number" id="saveAmount" placeholder="Amount to Save">
+    <input type="number" id="spendAmount" placeholder="Spending Amount">
+    <select id="transferAccount"></select>
+    <button class="primary" onclick="saveBudget()">Save & Transfer</button>
+  </div>
+</section>
+
+<!-- ACCOUNTS -->
+<section id="accounts">
+  <div class="card">
+    <h3>Add / Edit Account</h3>
+    <input id="accName" placeholder="Account Holder Name">
+    <input id="accNumber" placeholder="Account Number">
+    <select id="bankType">
+      <option>BML</option>
+      <option>MIB</option>
+      <option>CBM</option>
+    </select>
+    <button class="primary" onclick="addOrUpdateAccount()">Add / Update Account</button>
+  </div>
+
+  <div class="card">
+    <h3>Saved Accounts</h3>
+    <table>
+      <thead>
+        <tr><th>Name</th><th>Number</th><th>Bank</th><th>Actions</th></tr>
+      </thead>
+      <tbody id="accountList"></tbody>
+    </table>
+  </div>
+</section>
+
+<!-- HISTORY -->
+<section id="history">
+  <div class="card">
+    <h3>Monthly History</h3>
+    <button class="primary" onclick="resetHistory()">Reset History</button>
+    <table>
+      <thead>
+        <tr><th>Month</th><th>Salary</th><th>Saved</th><th>Spent</th><th>Left</th></tr>
+      </thead>
+      <tbody id="historyList"></tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>Account-wise Transfers</h3>
+    <div class="transfer-log">
+      <table>
+        <thead>
+          <tr><th>Date</th><th>From</th><th>To</th><th>Amount</th></tr>
+        </thead>
+        <tbody id="transferLog"></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- REPORTS -->
+<section id="reports">
+  <div class="card">
+    <h3>Export Reports</h3>
+    <button class="primary" onclick="generatePDF()">Download PDF</button>
+    <button class="primary" onclick="generateExcel()">Download Excel</button>
+  </div>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>
